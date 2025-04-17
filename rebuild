@@ -272,6 +272,9 @@ check_data() {
     # 9.KERNEL_TAGS  10.PLATFORM  11.FAMILY  12.BOOT_CONF  13.CONTRIBUTORS  14.BOARD  15.BUILD
     [[ -f "${model_conf}" ]] || error_msg "Missing model config file: [ ${model_conf} ]"
 
+
+    echo -e "${INFO}  ++--> ${model_conf}"
+
     # Get a list of build devices
     if [[ "${build_board}" == "all" ]]; then
         board_list=":(yes)"
@@ -294,7 +297,19 @@ check_data() {
             grep -E "^[^#].*${board_list}$" | awk -F':' '{print $9}' |
             sort -u | xargs
     ))
-    [[ "${#kernel_from[@]}" -eq 0 ]] && error_msg "Missing [ KERNEL_TAGS ] settings, stop building."
+
+    echo -e "${INFO}  ++--> cat ${model_conf} |
+            sed -e 's/NA//g' -e 's/NULL//g' -e 's/[ ][ ]*//g' |
+            grep -E "^[^#].*${board_list}$" | awk -F':' '{print $9}' |
+            sort -u | xargs "
+
+    if [[ "${#kernel_from[@]}" -eq 0 ]]
+        kernel_from="stable/6.1.y"
+    fi
+
+    #[[ "${#kernel_from[@]}" -eq 0 ]] && error_msg "Missing [ KERNEL_TAGS ] settings, stop building."
+
+    
     # Replace custom kernel tags
     [[ -n "${kernel_usage}" ]] && {
         for ((i = 0; i < ${#kernel_from[@]}; i++)); do
