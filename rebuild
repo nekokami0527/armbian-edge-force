@@ -309,7 +309,7 @@ check_data() {
 
     #[[ "${#kernel_from[@]}" -eq 0 ]] && error_msg "Missing [ KERNEL_TAGS ] settings, stop building."
 
-    
+
     # Replace custom kernel tags
     [[ -n "${kernel_usage}" ]] && {
         for ((i = 0; i < ${#kernel_from[@]}; i++)); do
@@ -1195,7 +1195,7 @@ loop_rebuild() {
 }
 
 # Show welcome message
-echo -e "${STEPS} Welcome to Rebuild Armbian!"
+echo -e "${STEPS} Welcome to Rebuild Armbian!  ----> "
 echo -e "${INFO} Server running on Ubuntu: [ Release: ${host_release} / Host: ${arch_info} ] \n"
 # Check script permission
 [[ "$(id -u)" == 0 ]] || error_msg "Please run this script as root: [ sudo ./${0} ]"
