@@ -571,6 +571,12 @@ confirm_version() {
     BOOT_CONF="$(echo ${board_conf} | awk -F':' '{print $12}')"
     CONTRIBUTORS="$(echo ${board_conf} | awk -F':' '{print $13}')"
 
+
+    echo -e "${INFO} ---+> \n"
+    echo -e "${INFO} ---+> ${MODEL_ID}  ${MODEL_NAME} ${SOC} |-| ${FDTFILE} |-| ${UBOOT_OVERLOAD} |-| ${TRUST_IMG} |-| ${MAINLINE_UBOOT} |-| ${BOOTLOADER_IMG} |-| ${KERNEL_TAGS} |-| ${PLATFORM} |-| ${FAMILY} |-| ${BOOT_CONF} |-| ${CONTRIBUTORS} \n "
+    echo -e "${INFO} ---+> \n"
+   
+
     # Check whether the key parameters are correct
     [[ -n "${PLATFORM}" ]] || error_msg "Invalid PLATFORM parameter: [ ${PLATFORM} ]"
     # Set supported platform name
