@@ -303,11 +303,13 @@ check_data() {
             grep -E "^[^#].*${board_list}$" | awk -F':' '{print $9}' |
             sort -u | xargs "
 
-    if [[ "${#kernel_from[@]}" -eq 0 ]]
-        kernel_from="stable/6.1.y"
-    fi
+    # if [[ "${#kernel_from[@]}" -eq 0 ]]
+    #     kernel_from="stable/6.1.y"
+    # fi
 
-    #[[ "${#kernel_from[@]}" -eq 0 ]] && error_msg "Missing [ KERNEL_TAGS ] settings, stop building."
+    echo -e "${INFO}  ++--> ${kernel_from}  <--++"
+
+    [[ "${#kernel_from[@]}" -eq 0 ]] && error_msg "Missing [ KERNEL_TAGS ] settings, stop building."
 
 
     # Replace custom kernel tags
