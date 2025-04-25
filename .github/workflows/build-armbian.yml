@@ -52,11 +52,11 @@ on:
       kernel_repo:
         description: "Set the kernel repository."
         required: false
-        default: "ophub/kernel"
+        default: "nekokami0527/kernel"
         type: choice
         options:
           - ophub/kernel
-          - xybingbing/kernel
+          - nekokami0527/kernel
       kernel_usage:
         description: "Set the tags of the stable kernel."
         required: false
@@ -86,11 +86,11 @@ on:
       builder_name:
         description: "Set Armbian builder signature."
         required: false
-        default: "ophub"
+        default: "nekokami0527"
         type: choice
         options:
           - ophub
-          - angel
+          - nekokami0527
 
 env:
   TZ: America/New_York
@@ -191,7 +191,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Rebuild Armbian
-        uses: xybingbing/amlogic-s9xxx-armbian@main
+        uses: nekokami0527/armbian-edge-force@main
         if: ${{ steps.clean.outputs.status }} == 'success' && !cancelled()
         with:
           build_target: armbian
