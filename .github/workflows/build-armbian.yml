@@ -53,11 +53,11 @@ on:
       kernel_repo:
         description: "Set the kernel repository."
         required: false
-        default: "nekokami0527/armbian-edge-force"
+        default: "ophub/kernel"
         type: choice
         options:
           - ophub/kernel
-          - nekokami0527/armbian-edge-force
+          - nekokami0527/kernel
       kernel_usage:
         description: "Set the tags of the stable kernel."
         required: false
