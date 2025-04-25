@@ -1,7 +1,7 @@
 #==========================================================================
 # Description: Compile the kernel
 # Copyright (C) 2021 https://github.com/unifreq/openwrt_packit
-# Copyright (C) 2021 https://github.com/ophub/amlogic-s9xxx-armbian
+# Copyright (C) 2021 https://github.com/nekokami0527/armbian-edge-force
 #==========================================================================
 
 name: Compile the kernel
@@ -137,8 +137,8 @@ jobs:
         run: |
           df -hT ${PWD}
           mkdir -p /builder/{kernel,output}
-          ln -sf /builder/kernel /home/runner/work/_actions/ophub/amlogic-s9xxx-armbian/main/compile-kernel/kernel
-          ln -sf /builder/output /home/runner/work/_actions/ophub/amlogic-s9xxx-armbian/main/compile-kernel/output
+          ln -sf /builder/kernel /home/runner/work/_actions/nekokami0527/armbian-edge-force/main/compile-kernel/kernel
+          ln -sf /builder/output /home/runner/work/_actions/nekokami0527/armbian-edge-force/main/compile-kernel/output
           echo "status=success" >> ${GITHUB_OUTPUT}
 
       - name: Compile the kernel [ ${{ inputs.kernel_version }} ]
